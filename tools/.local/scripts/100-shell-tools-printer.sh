@@ -18,8 +18,12 @@ REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
 
 # =========================== Printers
+printError() {
+	printf "\n❌ ${RED}${BRIGHT}[ERROR] ${1:-ERROR}\n${NORMAL}" >&2
+}
+
 exitError() {
-	printf "\n❌ ${RED}${BRIGHT}[ERROR] ${1:-ERROR FATAL !}\n${NORMAL}" >&2
+  printError "${1:-ERROR FATAL !}"
 	exit ${2:-5}
 }
 
